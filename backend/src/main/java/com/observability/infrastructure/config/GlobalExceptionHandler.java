@@ -1,5 +1,6 @@
 package com.observability.infrastructure.config;
 
+import com.observability.domain.exceptions.InvalidAlertException;
 import com.observability.domain.exceptions.InvalidLogException;
 import com.observability.domain.exceptions.InvalidMetricException;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,15 @@ public class GlobalExceptionHandler {
         log.error("Invalid metric exception: {}", ex.getMessage());
         Map<String, String> error = new HashMap<>();
         error.put("error", "Invalid metric");
+        error.put("message", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+    
+    @ExceptionHandler(InvalidAlertException.class)
+    public ResponseEntity<Map<String, String>> handleInvalidAlertException(InvalidAlertException ex) {
+        log.error("Invalid alert exception: {}", ex.getMessage());
+        Map<String, String> error = new HashMap<>();
+        error.put("error", "Invalid alert");
         error.put("message", ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
