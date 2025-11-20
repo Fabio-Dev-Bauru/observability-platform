@@ -76,11 +76,6 @@
             <artifactId>flyway-core</artifactId>
         </dependency>
         
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-database-postgresql</artifactId>
-        </dependency>
-        
         <!-- Messaging -->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
