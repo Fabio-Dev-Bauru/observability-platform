@@ -7,7 +7,7 @@ import { queryClient } from '../queryClient'
 export const createAlertListQuery = (
   alertService: IAlertService,
   filters?: AlertFilters
-): IQueryService<Alert[], AlertFilters> => ({
+): IQueryService<Alert[]> => ({
   queryKey: queryKeys.alerts.list(filters),
   queryFn: () => alertService.getAlerts(filters),
 })

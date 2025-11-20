@@ -1,6 +1,8 @@
-export interface IQueryService<TData, TVariables = void> {
+import { QueryFunctionContext } from '@tanstack/react-query'
+
+export interface IQueryService<TData> {
   queryKey: readonly unknown[]
-  queryFn: (variables?: TVariables) => Promise<TData>
+  queryFn: (context: QueryFunctionContext) => Promise<TData>
 }
 
 export interface IMutationService<TData, TVariables> {

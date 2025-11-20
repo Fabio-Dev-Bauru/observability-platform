@@ -7,7 +7,7 @@ import { queryClient } from '../queryClient'
 export const createLogListQuery = (
   logService: ILogService,
   filters?: LogFilters
-): IQueryService<LogEntry[], LogFilters> => ({
+): IQueryService<LogEntry[]> => ({
   queryKey: queryKeys.logs.list(filters),
   queryFn: () => logService.getLogs(filters),
 })

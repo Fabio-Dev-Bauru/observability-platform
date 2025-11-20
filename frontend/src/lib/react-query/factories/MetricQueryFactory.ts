@@ -7,7 +7,7 @@ import { queryClient } from '../queryClient'
 export const createMetricListQuery = (
   metricService: IMetricService,
   filters?: MetricFilters
-): IQueryService<Metric[], MetricFilters> => ({
+): IQueryService<Metric[]> => ({
   queryKey: queryKeys.metrics.list(filters),
   queryFn: () => metricService.getMetrics(filters),
 })
