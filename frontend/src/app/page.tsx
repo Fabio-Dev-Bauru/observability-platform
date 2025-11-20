@@ -10,18 +10,30 @@ export default function Home() {
         <p className="text-center mb-8 text-lg">
           Full-stack observability platform for logs, metrics, and events
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-4 flex-wrap">
           <Link
             href="/dashboard"
             className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
           >
-            Go to Dashboard
+            Dashboard
           </Link>
           <Link
             href="/logs"
             className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
           >
-            View Logs
+            Logs
+          </Link>
+          <Link
+            href="/metrics"
+            className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+          >
+            Metrics
+          </Link>
+          <Link
+            href="/alerts"
+            className="px-6 py-3 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition-colors"
+          >
+            Alerts
           </Link>
         </div>
       </div>
