@@ -15,7 +15,7 @@ export function useLogs(filters?: LogFilters): IUseLogs {
   return {
     logs,
     loading,
-    error: error ? (error instanceof Error ? error.message : 'Failed to load logs') : null,
+    error: error ? (error instanceof Error ? error.message : 'Falha ao carregar logs') : null,
     loadLogs: async () => {
       await refetch()
     },

@@ -33,7 +33,7 @@ export function useMetricsTimeSeries(refreshInterval: number = 30000): UseMetric
     selectedMetric,
     setSelectedMetric,
     loading,
-    error: error ? (error instanceof Error ? error.message : 'Failed to load metrics') : null,
+    error: error ? (error instanceof Error ? error.message : 'Falha ao carregar métricas') : null,
   }
 }
 

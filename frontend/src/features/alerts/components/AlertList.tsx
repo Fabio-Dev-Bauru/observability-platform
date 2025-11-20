@@ -16,7 +16,7 @@ export function AlertList() {
   const { alerts, loading, error, loadAlerts, resolveAlert } = useAlerts({ size: 50 })
 
   if (loading) {
-    return <LoadingState message="Loading alerts..." />
+    return <LoadingState message="Carregando alertas..." />
   }
 
   if (error) {
@@ -24,7 +24,7 @@ export function AlertList() {
   }
 
   if (alerts.length === 0) {
-    return <EmptyState message="No alerts found" />
+    return <EmptyState message="Nenhum alerta encontrado" />
   }
 
   return (
@@ -77,7 +77,7 @@ function AlertItem({ alert, onResolve }: AlertItemProps) {
                 variant="default"
                 className="mb-2 bg-green-600 hover:bg-green-700"
               >
-                Resolve
+                Resolver
               </Button>
             )}
             <div className="text-xs text-muted-foreground">

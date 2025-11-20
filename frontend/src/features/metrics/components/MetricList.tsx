@@ -13,7 +13,7 @@ export function MetricList() {
   const { metrics, loading, error, loadMetrics } = useMetrics({ size: 50 })
 
   if (loading) {
-    return <LoadingState message="Loading metrics..." />
+    return <LoadingState message="Carregando métricas..." />
   }
 
   if (error) {
@@ -21,7 +21,7 @@ export function MetricList() {
   }
 
   if (metrics.length === 0) {
-    return <EmptyState message="No metrics found" />
+    return <EmptyState message="Nenhuma métrica encontrada" />
   }
 
   return (

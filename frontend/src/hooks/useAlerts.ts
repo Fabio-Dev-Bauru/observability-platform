@@ -25,14 +25,14 @@ export function useAlerts(filters?: AlertFilters): IUseAlerts {
     try {
       await resolveMutation.mutateAsync(id)
     } catch (err) {
-      throw new Error(err instanceof Error ? err.message : 'Failed to resolve alert')
+      throw new Error(err instanceof Error ? err.message : 'Falha ao resolver alerta')
     }
   }
 
   return {
     alerts,
     loading,
-    error: error ? (error instanceof Error ? error.message : 'Failed to load alerts') : null,
+    error: error ? (error instanceof Error ? error.message : 'Falha ao carregar alertas') : null,
     loadAlerts: async () => {
       await refetch()
     },

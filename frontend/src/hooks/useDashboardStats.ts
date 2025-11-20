@@ -16,7 +16,7 @@ export function useDashboardStats(refreshInterval: number = 30000): IUseDashboar
   return {
     stats,
     loading,
-    error: error ? (error instanceof Error ? error.message : 'Failed to load dashboard stats') : null,
+    error: error ? (error instanceof Error ? error.message : 'Falha ao carregar estatísticas do dashboard') : null,
     refetch: async () => {
       await refetch()
     },

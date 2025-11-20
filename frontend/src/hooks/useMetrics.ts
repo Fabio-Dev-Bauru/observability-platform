@@ -15,7 +15,7 @@ export function useMetrics(filters?: MetricFilters): IUseMetrics {
   return {
     metrics,
     loading,
-    error: error ? (error instanceof Error ? error.message : 'Failed to load metrics') : null,
+    error: error ? (error instanceof Error ? error.message : 'Falha ao carregar métricas') : null,
     loadMetrics: async () => {
       await refetch()
     },

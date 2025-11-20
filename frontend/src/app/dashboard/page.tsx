@@ -17,7 +17,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <LoadingState message="Loading dashboard..." />
+        <LoadingState message="Carregando dashboard..." />
       </div>
     )
   }
@@ -91,20 +91,20 @@ function DashboardCharts({ stats, metrics, selectedMetric, setSelectedMetric }: 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
       <Card>
         <CardHeader>
-          <CardTitle>Logs by Level (Last Hour)</CardTitle>
+          <CardTitle>Logs por Nível (Última Hora)</CardTitle>
         </CardHeader>
         <CardContent>
           {stats?.logsByLevel ? (
             <LogsByLevelChart data={stats.logsByLevel} />
           ) : (
-            <EmptyState message="No data available" />
+            <EmptyState message="Nenhum dado disponível" />
           )}
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Metrics Time Series</CardTitle>
+          <CardTitle>Série Temporal de Métricas</CardTitle>
         </CardHeader>
         <CardContent>
           {metrics.length > 0 ? (
@@ -121,7 +121,7 @@ function DashboardCharts({ stats, metrics, selectedMetric, setSelectedMetric }: 
               <MetricsTimeSeriesChart metrics={metrics} metricName={selectedMetric} />
             </div>
           ) : (
-            <EmptyState message="No metrics available" />
+            <EmptyState message="Nenhuma métrica disponível" />
           )}
         </CardContent>
       </Card>
