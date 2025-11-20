@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.util.List;
 
-/**
- * Use case for retrieving log entries with filters.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -20,18 +17,6 @@ public class GetLogsUseCase {
     
     private final LogRepository logRepository;
     
-    /**
-     * Retrieves log entries with optional filters.
-     * 
-     * @param level Optional log level filter
-     * @param service Optional service filter
-     * @param host Optional host filter
-     * @param startTime Start of time range
-     * @param endTime End of time range
-     * @param page Page number (0-indexed)
-     * @param size Page size
-     * @return List of log entries matching the filters
-     */
     public List<LogEntry> execute(
         LogLevel level,
         String service,

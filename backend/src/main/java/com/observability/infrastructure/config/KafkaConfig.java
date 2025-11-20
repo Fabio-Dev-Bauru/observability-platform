@@ -6,9 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-/**
- * Kafka configuration for event publishing.
- */
 @Configuration
 public class KafkaConfig {
     

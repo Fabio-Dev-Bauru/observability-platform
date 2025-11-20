@@ -19,12 +19,6 @@ import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * REST controller for log entry operations.
- * 
- * This adapter handles HTTP requests and delegates to use cases,
- * maintaining separation between web layer and business logic.
- */
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/logs")
@@ -35,12 +29,6 @@ public class LogController {
     private final GetLogsUseCase getLogsUseCase;
     private final LogEntryMapper logEntryMapper;
     
-    /**
-     * Creates a new log entry.
-     * 
-     * @param request The log entry request
-     * @return The created log entry
-     */
     @PostMapping
     public ResponseEntity<LogEntryResponse> createLogEntry(@Valid @RequestBody LogEntryRequest request) {
         log.info("Received request to create log entry for service: {}", request.getService());
@@ -52,18 +40,6 @@ public class LogController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
     
-    /**
-     * Retrieves log entries with optional filters.
-     * 
-     * @param level Optional log level filter
-     * @param service Optional service filter
-     * @param host Optional host filter
-     * @param startTime Optional start time filter
-     * @param endTime Optional end time filter
-     * @param page Page number (default: 0)
-     * @param size Page size (default: 20)
-     * @return List of log entries
-     */
     @GetMapping
     public ResponseEntity<List<LogEntryResponse>> getLogs(
         @RequestParam(required = false) LogLevel level,
@@ -86,11 +62,6 @@ public class LogController {
         return ResponseEntity.ok(responses);
     }
     
-    /**
-     * Health check endpoint for logs service.
-     * 
-     * @return OK status
-     */
     @GetMapping("/health")
     public ResponseEntity<String> health() {
         return ResponseEntity.ok("Logs service is healthy");

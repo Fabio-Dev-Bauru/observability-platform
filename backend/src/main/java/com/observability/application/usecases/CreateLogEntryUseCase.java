@@ -10,12 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-/**
- * Use case for creating a new log entry.
- * 
- * This use case orchestrates the creation of log entries,
- * validating business rules and publishing events.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -24,13 +18,6 @@ public class CreateLogEntryUseCase {
     private final LogRepository logRepository;
     private final EventPublisher eventPublisher;
     
-    /**
-     * Creates a new log entry.
-     * 
-     * @param logEntry The log entry to create
-     * @return The created log entry with generated ID
-     * @throws InvalidLogException if the log entry is invalid
-     */
     public LogEntry execute(LogEntry logEntry) {
         log.debug("Creating log entry for service: {}", logEntry.getService());
         

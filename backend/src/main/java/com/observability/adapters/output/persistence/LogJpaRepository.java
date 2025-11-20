@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
 
-/**
- * Spring Data JPA repository for log entities.
- */
 @Repository
 public interface LogJpaRepository extends JpaRepository<LogEntity, String> {
     

@@ -8,12 +8,6 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 import java.util.Map;
 
-/**
- * Represents a metric in the system.
- * 
- * Metrics are time-series data points that represent
- * measurements of system behavior or performance.
- */
 @Getter
 @Builder
 @NoArgsConstructor
@@ -29,11 +23,6 @@ public class Metric {
     private Map<String, String> labels;
     private MetricType type;
     
-    /**
-     * Validates if the metric has all required fields.
-     * 
-     * @return true if valid, false otherwise
-     */
     public boolean isValid() {
         return name != null && !name.isBlank()
             && value != null

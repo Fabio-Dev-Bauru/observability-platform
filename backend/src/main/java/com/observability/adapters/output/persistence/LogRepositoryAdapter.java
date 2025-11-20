@@ -13,11 +13,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Adapter implementation of LogRepository using JPA.
- * 
- * This adapter bridges the domain layer with the persistence infrastructure.
- */
 @Component
 @RequiredArgsConstructor
 public class LogRepositoryAdapter implements LogRepository {

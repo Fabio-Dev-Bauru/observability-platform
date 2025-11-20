@@ -11,11 +11,6 @@ import org.hibernate.type.SqlTypes;
 import java.time.Instant;
 import java.util.Map;
 
-/**
- * JPA entity for log entries.
- * 
- * This adapter entity maps domain LogEntry to database table.
- */
 @Entity
 @Table(name = "logs", indexes = {
     @Index(name = "idx_logs_timestamp", columnList = "timestamp"),

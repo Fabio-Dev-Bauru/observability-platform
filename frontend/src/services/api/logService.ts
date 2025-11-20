@@ -10,27 +10,12 @@ const apiClient = axios.create({
   },
 })
 
-/**
- * Service for log-related API operations
- */
 export const logService = {
-  /**
-   * Creates a new log entry
-   * 
-   * @param logEntry - The log entry to create
-   * @returns The created log entry
-   */
   async createLog(logEntry: LogEntryRequest): Promise<LogEntry> {
     const response = await apiClient.post<LogEntry>('/logs', logEntry)
     return response.data
   },
 
-  /**
-   * Retrieves log entries with optional filters
-   * 
-   * @param filters - Optional filters for querying logs
-   * @returns Array of log entries
-   */
   async getLogs(filters?: LogFilters): Promise<LogEntry[]> {
     const params = new URLSearchParams()
     

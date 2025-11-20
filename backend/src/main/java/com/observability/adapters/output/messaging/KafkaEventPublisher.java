@@ -11,11 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-/**
- * Kafka implementation of EventPublisher.
- * 
- * Publishes domain events to Kafka topics for real-time processing.
- */
 @Slf4j
 @Component
 @RequiredArgsConstructor

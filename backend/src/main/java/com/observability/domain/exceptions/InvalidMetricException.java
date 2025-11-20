@@ -1,8 +1,5 @@
 package com.observability.domain.exceptions;
 
-/**
- * Exception thrown when a metric is invalid or malformed.
- */
 public class InvalidMetricException extends RuntimeException {
     
     public InvalidMetricException(String message) {

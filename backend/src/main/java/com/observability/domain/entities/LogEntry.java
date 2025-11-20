@@ -9,12 +9,6 @@ import lombok.NoArgsConstructor;
 import java.time.Instant;
 import java.util.Map;
 
-/**
- * Represents a log entry in the system.
- * 
- * This entity contains all the information about a single log entry,
- * including its level, message, metadata, and source information.
- */
 @Getter
 @Builder
 @NoArgsConstructor
@@ -32,11 +26,6 @@ public class LogEntry {
     private String spanId;
     private Map<String, Object> metadata;
     
-    /**
-     * Validates if the log entry has all required fields.
-     * 
-     * @return true if valid, false otherwise
-     */
     public boolean isValid() {
         return level != null 
             && message != null && !message.isBlank()
