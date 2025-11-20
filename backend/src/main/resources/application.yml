@@ -66,11 +66,20 @@ management:
         include: health,info,metrics,prometheus
   endpoint:
     health:
-      show-details: when-authorized
+      show-details: always
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
   metrics:
     export:
       prometheus:
         enabled: true
+    tags:
+      application: ${spring.application.name}
 
 logging:
   level:
