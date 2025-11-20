@@ -1,5 +1,6 @@
 package com.observability.domain.entities;
 
+import com.observability.domain.valueobjects.MetricType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
