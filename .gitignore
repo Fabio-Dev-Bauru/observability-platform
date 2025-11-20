@@ -36,3 +36,6 @@ coverage/
 *.swo
 *~
 
+# Documentation files (not tracked)
+COMO_FUNCIONA.md
+

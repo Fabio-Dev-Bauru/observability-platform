@@ -1,5 +1,7 @@
 'use client'
 
+import { Card, CardContent } from './card'
+
 interface StatCardProps {
   title: string
   value: string | number
@@ -17,15 +19,16 @@ export function StatCard({ title, value, subtitle, color = 'primary' }: StatCard
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-shadow">
-      <h2 className="text-lg font-semibold mb-2 text-gray-700">{title}</h2>
-      <p className={`text-3xl font-bold ${colorClasses[color]}`}>
-        {value}
-      </p>
-      {subtitle && (
-        <p className="text-sm text-gray-500 mt-2">{subtitle}</p>
-      )}
-    </div>
+    <Card className="hover:shadow-md transition-shadow">
+      <CardContent className="pt-6">
+        <h2 className="text-base font-medium text-muted-foreground mb-2">{title}</h2>
+        <p className={`text-3xl font-bold ${colorClasses[color]}`}>
+          {value}
+        </p>
+        {subtitle && (
+          <p className="text-sm text-muted-foreground mt-2">{subtitle}</p>
+        )}
+      </CardContent>
+    </Card>
   )
 }
-

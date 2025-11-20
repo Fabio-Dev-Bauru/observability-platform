@@ -1,33 +1,26 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { DashboardStats } from '@/types/dashboard'
-import { dashboardService } from '@/services/api/dashboardService'
+import { useQuery } from '@tanstack/react-query'
+import { IUseDashboardStats } from './interfaces/IUseDashboardStats'
+import { queryFactory } from '@/lib/react-query/factories/QueryFactory'
 
-export function useDashboardStats() {
-  const [stats, setStats] = useState<DashboardStats | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+export function useDashboardStats(refreshInterval: number = 30000): IUseDashboardStats {
+  const dashboardQueryFactory = queryFactory.getDashboardQueryFactory()
+  const query = dashboardQueryFactory.createStatsQuery()
 
-  const loadStats = async () => {
-    try {
-      setLoading(true)
-      setError(null)
-      const data = await dashboardService.getStats()
-      setStats(data)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load dashboard stats')
-    } finally {
-      setLoading(false)
-    }
+  const { data: stats = null, isLoading: loading, error, refetch } = useQuery({
+    queryKey: query.queryKey,
+    queryFn: query.queryFn,
+    refetchInterval: refreshInterval,
+  })
+
+  return {
+    stats,
+    loading,
+    error: error ? (error instanceof Error ? error.message : 'Failed to load dashboard stats') : null,
+    refetch: async () => {
+      await refetch()
+    },
   }
-
-  useEffect(() => {
-    loadStats()
-    const interval = setInterval(loadStats, 30000)
-    return () => clearInterval(interval)
-  }, [])
-
-  return { stats, loading, error, refetch: loadStats }
 }
 
