@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Dependencies
+node_modules/
+backend/target/
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Coverage
+coverage/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
