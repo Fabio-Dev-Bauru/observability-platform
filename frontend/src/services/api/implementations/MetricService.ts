@@ -1,7 +1,7 @@
 import { IMetricService } from '../interfaces/IMetricService'
 import { IApiClient } from '../interfaces/IApiClient'
 import { Metric, MetricRequest, MetricFilters } from '@/types/metric'
-import { QueryParamsBuilder } from '../utils/QueryParamsBuilder'
+import { buildQueryParams } from '../utils/QueryParamsBuilder'
 
 export class MetricService implements IMetricService {
   constructor(private apiClient: IApiClient) {}
@@ -11,7 +11,7 @@ export class MetricService implements IMetricService {
   }
 
   async getMetrics(filters?: MetricFilters): Promise<Metric[]> {
-    const params = QueryParamsBuilder.fromObject({
+    const params = buildQueryParams({
       name: filters?.name,
       service: filters?.service,
       host: filters?.host,

@@ -1,7 +1,7 @@
 import { ILogService } from '../interfaces/ILogService'
 import { IApiClient } from '../interfaces/IApiClient'
 import { LogEntry, LogEntryRequest, LogFilters } from '@/types/log'
-import { QueryParamsBuilder } from '../utils/QueryParamsBuilder'
+import { buildQueryParams } from '../utils/QueryParamsBuilder'
 
 export class LogService implements ILogService {
   constructor(private apiClient: IApiClient) {}
@@ -11,7 +11,7 @@ export class LogService implements ILogService {
   }
 
   async getLogs(filters?: LogFilters): Promise<LogEntry[]> {
-    const params = QueryParamsBuilder.fromObject({
+    const params = buildQueryParams({
       level: filters?.level,
       service: filters?.service,
       host: filters?.host,

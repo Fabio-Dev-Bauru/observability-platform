@@ -5,8 +5,7 @@ import { IUseDashboardStats } from './interfaces/IUseDashboardStats'
 import { queryFactory } from '@/lib/react-query/factories/QueryFactory'
 
 export function useDashboardStats(refreshInterval: number = 30000): IUseDashboardStats {
-  const dashboardQueryFactory = queryFactory.getDashboardQueryFactory()
-  const query = dashboardQueryFactory.createStatsQuery()
+  const query = queryFactory.dashboard.createStatsQuery()
 
   const { data: stats = null, isLoading: loading, error, refetch } = useQuery({
     queryKey: query.queryKey,

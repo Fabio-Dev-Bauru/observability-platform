@@ -2,8 +2,8 @@
 
 import { Alert, AlertSeverity, AlertStatus } from '@/types/alert'
 import { useAlerts } from '@/hooks/useAlerts'
-import { DateFormatter } from '@/utils/formatters/dateFormatter'
-import { BadgeVariantMapper } from '@/utils/mappers/badgeVariantMapper'
+import { formatDateTime } from '@/utils/formatters/dateFormatter'
+import { mapAlertSeverity, mapAlertStatus } from '@/utils/mappers/badgeVariantMapper'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -54,10 +54,10 @@ function AlertItem({ alert, onResolve }: AlertItemProps) {
         <div className="flex items-start justify-between mb-2">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <Badge variant={BadgeVariantMapper.mapAlertSeverity(alert.severity)}>
+              <Badge variant={mapAlertSeverity(alert.severity)}>
                 {alert.severity}
               </Badge>
-              <Badge variant={BadgeVariantMapper.mapAlertStatus(alert.status)}>
+              <Badge variant={mapAlertStatus(alert.status)}>
                 {alert.status}
               </Badge>
               <span className="font-semibold text-sm">{alert.name}</span>
@@ -81,7 +81,7 @@ function AlertItem({ alert, onResolve }: AlertItemProps) {
               </Button>
             )}
             <div className="text-xs text-muted-foreground">
-              {DateFormatter.formatDateTime(alert.triggeredAt)}
+              {formatDateTime(alert.triggeredAt)}
             </div>
           </div>
         </div>

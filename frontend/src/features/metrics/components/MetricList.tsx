@@ -2,7 +2,7 @@
 
 import { Metric } from '@/types/metric'
 import { useMetrics } from '@/hooks/useMetrics'
-import { DateFormatter } from '@/utils/formatters/dateFormatter'
+import { formatDateTime } from '@/utils/formatters/dateFormatter'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { LoadingState } from '@/components/common/LoadingState'
@@ -52,7 +52,7 @@ function MetricItem({ metric }: MetricItemProps) {
           <div className="text-right">
             <div className="text-lg font-bold text-primary-600">{metric.value}</div>
             <span className="text-xs text-muted-foreground">
-              {DateFormatter.formatDateTime(metric.timestamp)}
+              {formatDateTime(metric.timestamp)}
             </span>
           </div>
         </div>

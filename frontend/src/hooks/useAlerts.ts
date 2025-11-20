@@ -6,8 +6,7 @@ import { queryKeys } from '@/lib/react-query/queryKeys'
 
 export function useAlerts(filters?: AlertFilters): IUseAlerts {
   const queryClient = useQueryClient()
-  const alertQueryFactory = queryFactory.getAlertQueryFactory()
-  const query = alertQueryFactory.createListQuery(filters)
+  const query = queryFactory.alert.createListQuery(filters)
 
   const { data: alerts = [], isLoading: loading, error, refetch } = useQuery({
     queryKey: query.queryKey,
@@ -16,7 +15,7 @@ export function useAlerts(filters?: AlertFilters): IUseAlerts {
   })
 
   const resolveMutation = useMutation({
-    mutationFn: (id: string) => alertQueryFactory.createResolveMutation().mutationFn(id),
+    mutationFn: (id: string) => queryFactory.alert.createResolveMutation().mutationFn(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.alerts.all })
     },

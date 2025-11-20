@@ -1,7 +1,7 @@
 import { IAlertService } from '../interfaces/IAlertService'
 import { IApiClient } from '../interfaces/IApiClient'
 import { Alert, AlertRequest, AlertFilters } from '@/types/alert'
-import { QueryParamsBuilder } from '../utils/QueryParamsBuilder'
+import { buildQueryParams } from '../utils/QueryParamsBuilder'
 
 export class AlertService implements IAlertService {
   constructor(private apiClient: IApiClient) {}
@@ -11,7 +11,7 @@ export class AlertService implements IAlertService {
   }
 
   async getAlerts(filters?: AlertFilters): Promise<Alert[]> {
-    const params = QueryParamsBuilder.fromObject({
+    const params = buildQueryParams({
       status: filters?.status,
       severity: filters?.severity,
       service: filters?.service,

@@ -4,8 +4,7 @@ import { LogFilters } from '@/types/log'
 import { queryFactory } from '@/lib/react-query/factories/QueryFactory'
 
 export function useLogs(filters?: LogFilters): IUseLogs {
-  const logQueryFactory = queryFactory.getLogQueryFactory()
-  const query = logQueryFactory.createListQuery(filters)
+  const query = queryFactory.log.createListQuery(filters)
 
   const { data: logs = [], isLoading: loading, error, refetch } = useQuery({
     queryKey: query.queryKey,

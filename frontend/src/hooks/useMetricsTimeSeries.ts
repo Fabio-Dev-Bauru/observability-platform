@@ -13,8 +13,7 @@ interface UseMetricsTimeSeriesResult {
 
 export function useMetricsTimeSeries(refreshInterval: number = 30000): UseMetricsTimeSeriesResult {
   const [selectedMetric, setSelectedMetric] = useState<string>('')
-  const metricQueryFactory = queryFactory.getMetricQueryFactory()
-  const query = metricQueryFactory.createListQuery({ size: 100 })
+  const query = queryFactory.metric.createListQuery({ size: 100 })
 
   const { data: metrics = [], isLoading: loading, error } = useQuery({
     queryKey: query.queryKey,

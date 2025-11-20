@@ -4,8 +4,7 @@ import { MetricFilters } from '@/types/metric'
 import { queryFactory } from '@/lib/react-query/factories/QueryFactory'
 
 export function useMetrics(filters?: MetricFilters): IUseMetrics {
-  const metricQueryFactory = queryFactory.getMetricQueryFactory()
-  const query = metricQueryFactory.createListQuery(filters)
+  const query = queryFactory.metric.createListQuery(filters)
 
   const { data: metrics = [], isLoading: loading, error, refetch } = useQuery({
     queryKey: query.queryKey,

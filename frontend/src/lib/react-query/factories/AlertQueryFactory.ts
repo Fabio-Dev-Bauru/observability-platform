@@ -4,39 +4,35 @@ import { Alert, AlertRequest, AlertFilters } from '@/types/alert'
 import { queryKeys } from '../queryKeys'
 import { queryClient } from '../queryClient'
 
-export class AlertQueryFactory {
-  constructor(private alertService: IAlertService) {}
+export const createAlertListQuery = (
+  alertService: IAlertService,
+  filters?: AlertFilters
+): IQueryService<Alert[], AlertFilters> => ({
+  queryKey: queryKeys.alerts.list(filters),
+  queryFn: () => alertService.getAlerts(filters),
+})
 
-  createListQuery(filters?: AlertFilters): IQueryService<Alert[], AlertFilters> {
-    return {
-      queryKey: queryKeys.alerts.list(filters),
-      queryFn: () => this.alertService.getAlerts(filters),
-    }
-  }
+export const createActiveAlertsQuery = (
+  alertService: IAlertService
+): IQueryService<Alert[]> => ({
+  queryKey: queryKeys.alerts.active(),
+  queryFn: () => alertService.getActiveAlerts(),
+})
 
-  createActiveQuery(): IQueryService<Alert[]> {
-    return {
-      queryKey: queryKeys.alerts.active(),
-      queryFn: () => this.alertService.getActiveAlerts(),
-    }
-  }
+export const createAlertCreateMutation = (
+  alertService: IAlertService
+): IMutationService<Alert, AlertRequest> => ({
+  mutationFn: (variables: AlertRequest) => alertService.createAlert(variables),
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: queryKeys.alerts.all })
+  },
+})
 
-  createCreateMutation(): IMutationService<Alert, AlertRequest> {
-    return {
-      mutationFn: (variables: AlertRequest) => this.alertService.createAlert(variables),
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: queryKeys.alerts.all })
-      },
-    }
-  }
-
-  createResolveMutation(): IMutationService<Alert, string> {
-    return {
-      mutationFn: (id: string) => this.alertService.resolveAlert(id),
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: queryKeys.alerts.all })
-      },
-    }
-  }
-}
-
+export const createAlertResolveMutation = (
+  alertService: IAlertService
+): IMutationService<Alert, string> => ({
+  mutationFn: (id: string) => alertService.resolveAlert(id),
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: queryKeys.alerts.all })
+  },
+})
