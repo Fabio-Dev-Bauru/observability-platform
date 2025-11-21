@@ -13,9 +13,6 @@ export function useDashboardStats(refreshInterval: number = 30000): IUseDashboar
     queryKey: query.queryKey,
     queryFn: query.queryFn,
     refetchInterval: refreshInterval,
-    onError: () => {
-      toast.error('Falha ao carregar estatísticas do dashboard')
-    },
   })
 
   const refetchStats = async () => {

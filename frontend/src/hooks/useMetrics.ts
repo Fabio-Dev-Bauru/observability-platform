@@ -12,9 +12,6 @@ export function useMetrics(filters?: MetricFilters): IUseMetrics {
     queryKey: query.queryKey,
     queryFn: query.queryFn,
     refetchInterval: 30000,
-    onError: () => {
-      toast.error('Falha ao carregar métricas')
-    },
   })
 
   const loadMetrics = async () => {
