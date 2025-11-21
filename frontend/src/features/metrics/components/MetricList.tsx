@@ -2,6 +2,7 @@
 
 import { Metric } from '@/types/metric'
 import { useMetrics } from '@/hooks/useMetrics'
+import { useWebSocketMetrics } from '@/hooks/useWebSocketMetrics'
 import { formatDateTime } from '@/utils/formatters/dateFormatter'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -11,6 +12,7 @@ import { EmptyState } from '@/components/common/EmptyState'
 
 export function MetricList() {
   const { metrics, loading, error, loadMetrics } = useMetrics({ size: 50 })
+  useWebSocketMetrics()
 
   if (loading) {
     return <LoadingState message="Carregando métricas..." />

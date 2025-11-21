@@ -2,6 +2,7 @@
 
 import { Alert, AlertSeverity, AlertStatus } from '@/types/alert'
 import { useAlerts } from '@/hooks/useAlerts'
+import { useWebSocketAlerts } from '@/hooks/useWebSocketAlerts'
 import { formatDateTime } from '@/utils/formatters/dateFormatter'
 import { mapAlertSeverity, mapAlertStatus } from '@/utils/mappers/badgeVariantMapper'
 import { Card, CardContent } from '@/components/ui/card'
@@ -14,6 +15,7 @@ import { cn } from '@/lib/utils'
 
 export function AlertList() {
   const { alerts, loading, error, loadAlerts, resolveAlert } = useAlerts({ size: 50 })
+  useWebSocketAlerts()
 
   if (loading) {
     return <LoadingState message="Carregando alertas..." />

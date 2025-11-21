@@ -2,6 +2,9 @@
 
 import { useDashboardStats } from '@/hooks/useDashboardStats'
 import { useMetricsTimeSeries } from '@/hooks/useMetricsTimeSeries'
+import { useWebSocketLogs } from '@/hooks/useWebSocketLogs'
+import { useWebSocketMetrics } from '@/hooks/useWebSocketMetrics'
+import { useWebSocketAlerts } from '@/hooks/useWebSocketAlerts'
 import { StatCard } from '@/components/ui/StatCard'
 import { LogsByLevelChart } from '@/components/charts/LogsByLevelChart'
 import { MetricsTimeSeriesChart } from '@/components/charts/MetricsTimeSeriesChart'
@@ -14,6 +17,10 @@ import { PageLayout } from '@/components/layout/PageLayout'
 export default function DashboardPage() {
   const { stats, loading, error, refetch } = useDashboardStats()
   const { metrics, selectedMetric, setSelectedMetric } = useMetricsTimeSeries()
+  
+  useWebSocketLogs()
+  useWebSocketMetrics()
+  useWebSocketAlerts()
 
   if (loading) {
     return (
