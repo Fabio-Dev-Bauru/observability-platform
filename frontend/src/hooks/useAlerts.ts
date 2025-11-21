@@ -35,13 +35,20 @@ export function useAlerts(filters?: AlertFilters): IUseAlerts {
     }
   }
 
+  const loadAlerts = async () => {
+    try {
+      await refetch()
+      toast.success('Alertas atualizados com sucesso!')
+    } catch (err) {
+      toast.error('Falha ao atualizar alertas')
+    }
+  }
+
   return {
     alerts,
     loading,
     error: error ? (error instanceof Error ? error.message : 'Falha ao carregar alertas') : null,
-    loadAlerts: async () => {
-      await refetch()
-    },
+    loadAlerts,
     resolveAlert,
   }
 }
