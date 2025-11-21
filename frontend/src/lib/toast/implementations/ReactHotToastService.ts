@@ -32,20 +32,14 @@ class ReactHotToastService implements IToastService {
   show(message: string, type: ToastType = 'info'): void {
     const options = this.getToastOptions(type)
     
-    switch (type) {
-      case 'success':
-        toast.success(message, options)
-        break
-      case 'error':
-        toast.error(message, options)
-        break
-      case 'warning':
-        toast(message, { ...options, icon: this.config.warningIcon })
-        break
-      case 'info':
-        toast(message, { ...options, icon: this.config.infoIcon })
-        break
-    }
+    const toastFn = {
+      success: toast.success,
+      error: toast.error,
+      warning: toast,
+      info: toast,
+    }[type]
+
+    toastFn(message, options)
   }
 
   success(message: string): void {
