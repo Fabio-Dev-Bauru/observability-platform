@@ -3,9 +3,11 @@ import { IUseAlerts } from './interfaces/IUseAlerts'
 import { AlertFilters } from '@/types/alert'
 import { queryFactory } from '@/lib/react-query/factories/QueryFactory'
 import { queryKeys } from '@/lib/react-query/queryKeys'
+import { useToast } from './useToast'
 
 export function useAlerts(filters?: AlertFilters): IUseAlerts {
   const queryClient = useQueryClient()
+  const toast = useToast()
   const query = queryFactory.alert.createListQuery(filters)
 
   const { data: alerts = [], isLoading: loading, error, refetch } = useQuery({
@@ -18,6 +20,10 @@ export function useAlerts(filters?: AlertFilters): IUseAlerts {
     mutationFn: (id: string) => queryFactory.alert.createResolveMutation().mutationFn(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.alerts.all })
+      toast.success('Alerta resolvido com sucesso!')
+    },
+    onError: (error: Error) => {
+      toast.error(`Falha ao resolver alerta: ${error.message}`)
     },
   })
 
@@ -25,7 +31,7 @@ export function useAlerts(filters?: AlertFilters): IUseAlerts {
     try {
       await resolveMutation.mutateAsync(id)
     } catch (err) {
-      throw new Error(err instanceof Error ? err.message : 'Falha ao resolver alerta')
+      // Error já tratado no onError do mutation
     }
   }
 
