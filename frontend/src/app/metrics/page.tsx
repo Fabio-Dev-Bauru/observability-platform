@@ -1,11 +1,11 @@
 import { MetricList } from '@/features/metrics/components/MetricList'
+import { PageLayout } from '@/components/layout/PageLayout'
 
 export default function MetricsPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Metrics</h1>
+    <PageLayout title="Métricas" description="Visualize e monitore métricas do sistema">
       <MetricList />
-    </div>
+    </PageLayout>
   )
 }
 
