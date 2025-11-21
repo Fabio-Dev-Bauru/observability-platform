@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Observability Center',
-  description: 'Full-stack observability platform for logs, metrics, and events',
+  description: 'Plataforma de observabilidade full-stack para logs, métricas e eventos',
 }
 
 export default function RootLayout({

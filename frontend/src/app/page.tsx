@@ -1,18 +1,19 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { PageLayout } from '@/components/layout/PageLayout'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between">
-        <Card className="text-center">
+    <PageLayout>
+      <div className="flex min-h-[60vh] flex-col items-center justify-center">
+        <Card className="w-full max-w-2xl text-center">
           <CardHeader>
             <CardTitle className="text-4xl font-bold mb-4">
               Observability Center
             </CardTitle>
             <CardDescription className="text-lg">
-              Full-stack observability platform for logs, metrics, and events
+              Plataforma de observabilidade full-stack para logs, métricas e eventos
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -24,16 +25,16 @@ export default function Home() {
                 <Link href="/logs">Logs</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/metrics">Metrics</Link>
+                <Link href="/metrics">Métricas</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/alerts">Alerts</Link>
+                <Link href="/alerts">Alertas</Link>
               </Button>
             </div>
           </CardContent>
         </Card>
       </div>
-    </main>
+    </PageLayout>
   )
 }
 

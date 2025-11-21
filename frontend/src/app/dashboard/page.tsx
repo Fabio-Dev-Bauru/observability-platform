@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { LoadingState } from '@/components/common/LoadingState'
 import { ErrorState } from '@/components/common/ErrorState'
 import { EmptyState } from '@/components/common/EmptyState'
+import { PageLayout } from '@/components/layout/PageLayout'
 
 export default function DashboardPage() {
   const { stats, loading, error, refetch } = useDashboardStats()
@@ -16,27 +17,25 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <PageLayout>
         <LoadingState message="Carregando dashboard..." />
-      </div>
+      </PageLayout>
     )
   }
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <PageLayout>
         <ErrorState message={error} onRetry={refetch} />
-      </div>
+      </PageLayout>
     )
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
-      
+    <PageLayout title="Dashboard" description="Visão geral do sistema de observabilidade">
       <DashboardStats stats={stats} />
       <DashboardCharts stats={stats} metrics={metrics} selectedMetric={selectedMetric} setSelectedMetric={setSelectedMetric} />
-    </div>
+    </PageLayout>
   )
 }
 
